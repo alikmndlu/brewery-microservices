@@ -43,4 +43,12 @@ public class CustomerController {
         customerService.updateCustomer(id, customerDto);
         return ResponseEntity.noContent().build();
     }
+
+    // delete customer
+    @DeleteMapping("/{customer-id}")
+    public ResponseEntity<?> handleDelete(@PathVariable("customer-id") UUID id){
+        log.info("Inside handleDelete method of CustomerController");
+        customerService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }

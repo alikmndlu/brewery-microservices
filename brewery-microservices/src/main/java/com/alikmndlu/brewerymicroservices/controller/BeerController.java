@@ -4,6 +4,7 @@ import com.alikmndlu.brewerymicroservices.dto.BeerDto;
 import com.alikmndlu.brewerymicroservices.service.BeerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +41,14 @@ public class BeerController {
     public ResponseEntity<?> handleUpdate(@PathVariable("beer-id") UUID id, @RequestBody BeerDto beerDto){
         log.info("Inside handleUpdate method of BeerController");
         beerService.updateBeer(id, beerDto);
+        return ResponseEntity.noContent().build();
+    }
+
+    // delete beer
+    @DeleteMapping("/{beer-id}")
+    public ResponseEntity<?> handleDelete(@PathVariable("beer-id") UUID id){
+        log.info("Inside handleDelete method of BeerController");
+        beerService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }

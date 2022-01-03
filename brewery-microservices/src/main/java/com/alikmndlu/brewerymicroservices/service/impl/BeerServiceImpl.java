@@ -35,6 +35,13 @@ public class BeerServiceImpl implements BeerService {
 
     @Override
     public void updateBeer(UUID id, BeerDto beerDto) {
-        // todo update beer details
+        log.info("Inside updateBeer method of BeerServiceImpl");
+        // todo real impl - update beer details
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+        log.info("Inside deleteById method of BeerServiceImpl");
+        // todo real impl - delete beer details
     }
 }

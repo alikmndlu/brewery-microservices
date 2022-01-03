@@ -30,6 +30,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(UUID id, CustomerDto customerDto) {
-        // todo update customer details
+        log.info("Inside updateCustomer method of CustomerServiceImpl");
+        // todo real impl - update customer details
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+        log.info("Inside deleteById method of CustomerServiceImpl");
+        // todo real impl - delete customer details
     }
 }
