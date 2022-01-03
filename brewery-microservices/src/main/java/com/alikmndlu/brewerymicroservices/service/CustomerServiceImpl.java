@@ -18,4 +18,13 @@ public class CustomerServiceImpl implements CustomerService {
                 .name("Ali Kmndlu")
                 .build();
     }
+
+    @Override
+    public CustomerDto saveNewCustomer(CustomerDto customerDto) {
+        log.info("Inside saveNewCustomer method of CustomerServiceImpl");
+        return CustomerDto.builder()
+                .id(UUID.randomUUID())
+                .name(customerDto.getName())
+                .build();
+    }
 }
