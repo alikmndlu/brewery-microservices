@@ -27,12 +27,19 @@ public class BeerController {
 
     // save new beer
     @PostMapping("/")
-    public ResponseEntity<?> saveNewBeer(@RequestBody BeerDto beerDto) {
-        log.info("Inside saveNewBeer method of BeerController");
+    public ResponseEntity<?> handleCreate(@RequestBody BeerDto beerDto) {
+        log.info("Inside handleCreate method of BeerController");
         BeerDto savedBeer = beerService.saveNewBeer(beerDto);
         return ResponseEntity.created(
                 URI.create("/api/v1/beers/" + savedBeer.getId().toString())
         ).build();
     }
 
+    // update existing beer
+    @PutMapping("/{beer-id}")
+    public ResponseEntity<?> handleUpdate(@PathVariable("beer-id") UUID id, @RequestBody BeerDto beerDto){
+        log.info("Inside handleUpdate method of BeerController");
+        beerService.updateBeer(id, beerDto);
+        return ResponseEntity.noContent().build();
+    }
 }

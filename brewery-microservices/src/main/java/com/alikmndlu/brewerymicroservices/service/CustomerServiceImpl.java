@@ -27,4 +27,9 @@ public class CustomerServiceImpl implements CustomerService {
                 .name(customerDto.getName())
                 .build();
     }
+
+    @Override
+    public void updateCustomer(UUID id, CustomerDto customerDto) {
+        // todo update customer details
+    }
 }

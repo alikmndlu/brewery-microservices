@@ -28,11 +28,19 @@ public class CustomerController {
 
     // save new customer
     @PostMapping("/")
-    public ResponseEntity<?> saveNewCustomer(@RequestBody CustomerDto customerDto) {
-        log.info("Inside saveNewCustomer method of CustomerController");
+    public ResponseEntity<?> handleCreate(@RequestBody CustomerDto customerDto) {
+        log.info("Inside handleCreate method of CustomerController");
         CustomerDto savedCustomer = customerService.saveNewCustomer(customerDto);
         return ResponseEntity.created(
                 URI.create("/api/v1/customers/" + savedCustomer.getId().toString())
         ).build();
+    }
+
+    // update existing customer
+    @PutMapping("/{customer-id}")
+    public ResponseEntity<?> handleUpdate(@PathVariable("customer-id") UUID id, @RequestBody CustomerDto customerDto) {
+        log.info("Inside handleUpdate method of CustomerController");
+        customerService.updateCustomer(id, customerDto);
+        return ResponseEntity.noContent().build();
     }
 }

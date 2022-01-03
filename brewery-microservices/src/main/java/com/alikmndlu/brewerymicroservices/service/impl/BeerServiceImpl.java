@@ -32,4 +32,9 @@ public class BeerServiceImpl implements BeerService {
                 .upc(beerDto.getUpc())
                 .build();
     }
+
+    @Override
+    public void updateBeer(UUID id, BeerDto beerDto) {
+        // todo update beer details
+    }
 }
